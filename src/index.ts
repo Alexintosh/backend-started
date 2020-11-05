@@ -1,4 +1,6 @@
+import 'dotenv/config';
 import * as express from 'express';
+import { connectDB } from './database'
 
 const app = express();
 
@@ -18,4 +20,7 @@ const startServer = async () => {
   });
 };
 
-startServer();
+(async () => {
+  await connectDB();
+  await startServer();
+})();
